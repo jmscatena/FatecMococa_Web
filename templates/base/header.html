@@ -1,0 +1,75 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <img src="{% static '/imagens/institucional/logo_final.png' %}" id="logo"class="navbar-brand"/>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="menuInstitucional" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                INSTITUCIONAL
+              </a>
+              <div class="dropdown-menu" aria-labelledby="menuInstitucional">
+                <a class="dropdown-item" href="{% url 'institucional' 'quemsomos'%}">Quem somos</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'congregacao'%}">Congregação</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'cepe'%}">CEPE</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'diretoria'%}">Diretoria da Unidade</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'ds'%}">Diretoria de Serviços</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'secretaria'%}">Secretaria acadêmica</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'cpa'%}">CPA</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'cipa'%}">CIPA</a>
+                <a class="dropdown-item" href="#">Legislação</a>
+                <a class="dropdown-item" href="{% url 'institucional' 'ti'%}">Núcleo de T.I.</a>
+                <a class="dropdown-item" href="#">Fale Conosco</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">PRESTAÇÃO DE CONTAS</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="menuCursos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                CURSOS
+              </a>
+              <div class="dropdown-menu" aria-labelledby="menuCursos">
+                <a class="dropdown-item" href="{% url 'cursos' 'agro' %}">Agronegócio</a>
+                <a class="dropdown-item" href="{% url 'cursos' 'ads' %}">Análise e Desenvolvimento de Sistemas</a>
+                <a class="dropdown-item" href="{% url 'cursos' 'ge' %}">Gestão Empresarial</a>
+                <a class="dropdown-item" href="{% url 'cursos' 'ge' %}">Gestão Empresarial EAD</a>
+                <a class="dropdown-item" href="{% url 'cursos' 'grh' %}">Gestão de R.H.</a>
+                <a class="dropdown-item" href="{% url 'cursos' 'gti' %}">Gestão de T.I.</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="menuAlunos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ALUNOS
+              </a>
+              <div class="dropdown-menu" aria-labelledby="menuAlunos">
+                <a class="dropdown-item" href="#">Trabalho de Graduação</a>
+                <a class="dropdown-item" href="#">Estágios</a>
+                <a class="dropdown-item" href="#">Monitoria</a>
+                <a class="dropdown-item" href="#">Horários de Aula</a>
+                <a class="dropdown-item" href="#">CPS & Microsoft</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="menuProfessores" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                PROFESSORES
+              </a>
+              <div class="dropdown-menu" aria-labelledby="menuProfessores">
+                <a class="dropdown-item" href="#">Corpo Docente</a>
+                <a class="dropdown-item" href="#">Editais Internos</a>
+                <a class="dropdown-item" href="#">Auxiliares Docentes</a>
+                <a class="dropdown-item" href="#">Extensão</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CALENDÁRIO</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
