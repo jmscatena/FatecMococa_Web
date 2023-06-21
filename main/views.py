@@ -5,7 +5,7 @@ def home(request):
 
 
 def cursos(request,nome):
-    cursos = {'agro','ads','gti','ge','grh'}
+    cursos = {'agro','ads','gti','ge','ge_ead','grh'}
     page = 'cursos/'+nome+'.html' if nome in cursos else 'errors/404.html'
     return render(request,page)
 
