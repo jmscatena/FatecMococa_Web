@@ -14,3 +14,9 @@ def institucional(request, nome):
     paginas = {'secretaria','calendario','cepe','cipa','congregacao','contas','convenios','diretoria','ds','quemsomos','ti'}
     page = 'institucional/'+nome+'.html' if nome in paginas else 'errors/404.html'
     return render(request,page)
+
+
+def alunos(request, nome):
+    paginas = {'estagios','horario_aulas','monitoria','tg'}
+    page = 'alunos/'+nome+'.html' if nome in paginas else 'errors/404.html'
+    return render(request,page)

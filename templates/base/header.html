@@ -47,10 +47,10 @@
                 ALUNOS
               </a>
               <div class="dropdown-menu" aria-labelledby="menuAlunos">
-                <a class="dropdown-item" href="#">Trabalho de Graduação</a>
-                <a class="dropdown-item" href="#">Estágios</a>
-                <a class="dropdown-item" href="#">Monitoria</a>
-                <a class="dropdown-item" href="#">Horários de Aula</a>
+                <a class="dropdown-item" href="{% url 'alunos' 'tg'%}">Trabalho de Graduação</a>
+                <a class="dropdown-item" href="{% url 'alunos' 'estagios'%}">Estágios</a>
+                <a class="dropdown-item" href="{% url 'alunos' 'monitoria'%}">Monitoria</a>
+                <a class="dropdown-item" href="{% url 'alunos' 'horario_aulas'%}">Horários de Aula</a>
                 <a class="dropdown-item" href="#">CPS & Microsoft</a>
               </div>
             </li>

@@ -209,8 +209,8 @@ main{
 #emec, #emecqrcode{
     margin:0 auto auto auto 3%;
     border-radius: 20%!important;
-    width:45%;
-    height:45%;
+    width:30%;
+    height:30%;
     justify-content: flex-end;
 }
 
@@ -232,6 +232,11 @@ main{
     margin: 0 auto;
     font-family: 'Rubik', sans-serif;
 
+}
+
+p{
+    font-family: 'Rubik', sans-serif;
+    font-height:400;
 }
 
 
