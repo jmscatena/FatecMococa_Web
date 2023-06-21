@@ -59,9 +59,9 @@
                 PROFESSORES
               </a>
               <div class="dropdown-menu" aria-labelledby="menuProfessores">
-                <a class="dropdown-item" href="#">Corpo Docente</a>
+                <a class="dropdown-item" href="{% url 'professores' 'corpodocente' %}">Corpo Docente</a>
                 <a class="dropdown-item" href="#">Editais Internos</a>
-                <a class="dropdown-item" href="#">Auxiliares Docentes</a>
+                <a class="dropdown-item" href="{% url 'professores' 'auxdoc' %}">Auxiliares Docentes</a>
                 <a class="dropdown-item" href="#">Extensão</a>
               </div>
             </li>

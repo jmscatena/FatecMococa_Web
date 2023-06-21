@@ -20,3 +20,9 @@ def alunos(request, nome):
     paginas = {'estagios','horario_aulas','monitoria','tg'}
     page = 'alunos/'+nome+'.html' if nome in paginas else 'errors/404.html'
     return render(request,page)
+
+
+def professores(request, nome):
+    paginas = {'corpodocente','auxdoc'}
+    page = 'professores/'+nome+'.html' if nome in paginas else 'errors/404.html'
+    return render(request,page)
