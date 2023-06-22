@@ -207,7 +207,7 @@ main{
     width:75%;
 }
 #emec, #emecqrcode{
-    margin:0 auto auto auto 3%;
+    margin:0 auto auto auto;
     border-radius: 20%!important;
     width:30%;
     height:30%;
@@ -229,8 +229,10 @@ main{
 #logofatec{
     background-color:#000e4b;
     text-align:center;
-    margin: 0 auto;
+    margin: 0 10% 0 10%;
+    padding:0;
     font-family: 'Rubik', sans-serif;
+    border-radius: 50px!important;
 
 }
 
