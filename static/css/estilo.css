@@ -240,5 +240,15 @@ p{
     font-family: 'Rubik', sans-serif;
     font-height:400;
 }
+.errors{
+    width: 18rem!important;
+    position:absolute!important;
+    margin:0 0 0 50%!important;
+
+}
+
+.card-img-top{
+    border-radius: 25% 10%!important;
+}
 
 
