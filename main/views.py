@@ -11,7 +11,7 @@ def cursos(request,nome):
 
 
 def institucional(request, nome):
-    paginas = {'secretaria','calendario','cepe','cipa','congregacao','contas','convenios','diretoria','ds','quemsomos','ti'}
+    paginas = {'secretaria','calendario','cpa','cepe','cipa','congregacao','contas','convenios','diretoria','ds','quemsomos','ti'}
     page = 'institucional/'+nome+'.html' if nome in paginas else 'errors/404.html'
     return render(request,page)
 

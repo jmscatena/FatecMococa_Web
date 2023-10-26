@@ -43,7 +43,7 @@
 			<div class="card-body">
 				<img src="{% static '/imagens/cursos/agro_logo.png' %}"/>
 				<br><br>
-				<h4 class="card-text">Agronegócio</h4>
+				<h5 class="card-text">Agronegócio</h5>
 			</div>
 		</div>
 		</a>
@@ -54,18 +54,31 @@
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/ads_logo.png' %}"/>
 					<br><br>
-					<h4 class="card-text">Análise e Desenvolvimento de Sistemas</h4>
+					<h5 class="card-text">Análise e Desenvolvimento de Sistemas</h5>
 				</div>
 			</div>
 		</a>
 	  </div>
 	  <div class="cards">
+		<a href="{% url 'cursos' 'ads'%}" class='card-link'>
+			<div class="card w-90">
+				<div class="card-body">
+					<img src="{% static '/imagens/cursos/ads_logo_ams.png' %}"/>
+					<br>
+					<h5 class="card-text">Análise e Desenvolvimento de Sistemas</h5>
+					<h5 class="card-text">(AMS)</h5>
+				</div>
+			</div>
+		</a>
+	  </div>
+
+	  <div class="cards">
 		<a href="{% url 'cursos' 'gti'%}" class='card-link'>
 		  <div class="card w-90">
 				<div class="card-body">
-					<img src="{% static '/imagens/cursos/gti_logo.png' %}"/>
+					<img src="{% static '/imagens/cursos/tsi_logo.png' %}"/>
 					<br><br>
-					<h4 class="card-text">Gestão de Tecnologia da Informação</h4>
+					<h5 class="card-text">Sistemas para Internet</h5>
 				</div>
 			</div>
 		</a>
@@ -76,7 +89,19 @@
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/gestao_logo.jpg' %}"/>
 					<br><br>
-					<h4 class="card-text">Gestão Empresarial</h4>
+					<h5 class="card-text">Gestão Empresarial</h5>
+				</div>
+			</div>
+		</a>
+	  </div>
+	  <div class="cards">
+		<a href="{% url 'cursos' 'ge'%}" class='card-link'>
+		  <div class="card w-90">
+				<div class="card-body">
+					<img src="{% static '/imagens/cursos/gestao_logo.jpg' %}"/>
+					<br><br>
+					<h5 class="card-text">Gestão Empresarial</h5>
+					<h5 class="card-text">(EAD)</h5>
 				</div>
 			</div>
 		</a>
@@ -87,7 +112,7 @@
 				<div class="card-body">
 					<img src="{% static 'imagens/cursos/grh_logo.jpg' %}"/>
 					<br><br>
-					<h4 class="card-text">Gestão de Recursos Humanos</h4>
+					<h5 class="card-text">Gestão de Recursos Humanos</h5>
 				</div>
 			</div>
 		</a>
@@ -134,14 +159,14 @@
 				<div class="card-body">
 					<img src="{% static '/imagens/gestao_logo.jpg' %}"/>
 					<br><br>
-					<h4>Gestão Empresarial</h4>
+					<h5>Gestão Empresarial</h5>
 				</div>
 			</div>
 			<div class="card">
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/agro_logo.png' %}"/>
 					<br><br>
-					<h4>Agronegócio</h4>
+					<h5>Agronegócio</h5>
 				</div>
 			</div>
 			</div>
