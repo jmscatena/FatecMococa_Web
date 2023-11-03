@@ -1,0 +1,38 @@
+{% extends 'base/main.html'%}
+{% block content %}
+
+  <br>
+  <main>
+    <header class="entry-header">
+      <h1 class="entry-title">Editor Notícias</h1>
+      <div class="linha"></div>
+    </header>
+    <br>
+    <form id="form" method="POST">
+      <div class="entry-content" style="width:95%!important" >
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control" id="titulo">
+        </div>
+        <div class="form-group">
+            <label for="capa">Imagem de Exibição</label>
+            <input type="file" class="form-control" id="capa">
+        </div>
+        <div class="form-group">
+            <label for="anexo">Arquivo Anexado</label>
+            <input type="file" class="form-control" id="anexo">
+        </div>
+        <div class="form-group">
+          <label for="editor">Descrição</label>
+          <textarea id="editor" ></textarea>
+        </div>
+
+          <br>
+      </div>
+    </form>
+  </main>
+  <br>
+  <br>
+  <br>
+{% endblock content%}
+

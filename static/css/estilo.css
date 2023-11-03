@@ -132,9 +132,10 @@
 }
 
 .container{
-    margin:0 auto;
+    margin:0 auto!important;
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color:white!important;
 }
 
