@@ -17,7 +17,9 @@ def index(request,pk=None):
         return render(request,'errors/404.html')
 
 def edit(request):
-    return render(request,'noticias/edit.html')
+    if request.method == "POST":
+        create(request)
+    else: return render(request,'noticias/edit.html',{'code':200})
 def create(request):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
@@ -34,7 +36,7 @@ def create(request):
                 print(ex)
                 code = ex
     else: code = 401  # Unauthorized
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    return render(request, 'noticias/edit.html', {code: code, error: error})
 
 def destroy(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None

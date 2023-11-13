@@ -25,7 +25,19 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Summernote -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script type="javascript">
+     import Swal from 'sweetalert2';
 
+      $(function() {
+            window.Swal = Swal;
+            var Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000
+            });
+
+    </script>
 
 </head>
 <body>

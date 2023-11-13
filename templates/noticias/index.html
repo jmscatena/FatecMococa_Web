@@ -16,76 +16,24 @@
           <th>Descrição</th>
           <th>Anexos</th>
           <th>Imagem</th>
-          <th>Ação</th>
+          <th>Ações</th>
         </tr>
         </thead>
 
         <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td> 4</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>5.5</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>AOL browser (AOL desktop)</td>
-                  <td>Win XP</td>
-                  <td>6</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.7</td>
-                  <td>1.7</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.5</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>1.8</td>
-                </tr>
-                </tbody>
+          {% for n in news %}
+          <tr>
+            <td>{{c.titulo}}</td>
+            <td>{{c.descricao}}</td>
+            <td>{{c.anexos}}</td>
+            <td>{{c.imagem}}</td>
+            <td>
+              <button name="del" id="del" class="btn btn-danger"><i class="fas fa-eraser"></i></button>
+              <button name="edit" id="edit" class="btn btn-success "><i class="fas fa-pencil-alt"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
       </table>
       <br>
     </div>

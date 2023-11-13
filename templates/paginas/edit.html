@@ -4,11 +4,11 @@
   <br>
   <main>
     <header class="entry-header">
-      <h1 class="entry-title">Editor Notícias</h1>
+      <h1 class="entry-title">Editor Páginas</h1>
       <div class="linha"></div>
     </header>
     <br>
-    <form id="form" method="POST" action="{% url 'news_edit' %}">
+    <form id="form" method="POST">
       <div class="entry-content" style="width:95%!important" >
         <div class="form-group">
             <label for="titulo">Título</label>
@@ -37,19 +37,5 @@
   <br>
   <br>
   <br>
-<script>
-
-
-  {% if code == 200 %}
-   Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              timer: 1500
-            });
-  {% endif %}
-
-</script>
 {% endblock content%}
 
