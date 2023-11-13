@@ -132,19 +132,23 @@
 	</div>
 	<br>
 	<div class="row container">
-		<div class="card card-news " style="margin-top:10px;">
+		<div class="card card-news" style="margin-top:10px;width:70%;">
 				<div class="card-body">
 					<table class="no-border">
+						{% for n in news %}
 						<tr>
-							<td>
+							<td style="margin-left:10px;">
 								<div class="card">
 									<div class="card-body">
 										<br>
 									</div>
 								</div>
 							</td>
-							<td></td>
+							<td>
+								{{n.titulo}}
+							</td>
 						</tr>
+						{% endfor %}
 					</table>
 				</div>
 		  </div>

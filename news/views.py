@@ -4,10 +4,12 @@ import sweetify
 # Create your views here.
 
 def index(request,pk=None):
+    noticias = []
     if request.method == 'POST':
         create(request)
     elif request.method == 'GET':
-        return render(request, 'noticias/index.html')
+        noticias = Noticia.objects.all()
+        return render(request, 'noticias/index.html',{noticias:noticias})
     elif request.method == 'GET' and pk is not None:
         select(request, pk)
     elif request.method == 'PATCH':
@@ -20,26 +22,25 @@ def index(request,pk=None):
 def edit(request):
     if request.method == "POST":
         create(request)
-    else: return render(request,'noticias/edit.html',{'code':200})
+    return render(request,'noticias/edit.html')
 def create(request):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
-    if tk != None:
-        try:
-            title = request.POST['titulo']
-            description = request.POST['descricao']
-            file = request.FILES['arquivo'] if 'arquivo' in request.POST else './static/default.png'
-            cover = request.FILES['capa'] if 'capa' in request.POST else './static/default_cover.png'
-            new = Noticia(titulo=title,descricao=description, arquivo=file,capa=cover)
-            new.save()
-            code=201
-            sweetify.toast(request, 'Adicionado com Sucesso!!!', icon="success", timer=3000)
-        except Exception as ex:
-                print(ex)
-                sweetify.toast(request, 'Error ao Adicionar!', icon="error", timer=3000)
-                code = ex
-    else: code = 401  # Unauthorized
-    return render(request, 'noticias/edit.html', {code: code, error: error})
+    #if tk != None:
+    try:
+        title = request.POST['titulo']
+        description = request.POST['descricao']
+        file = request.FILES['anexo'] if 'arquivo' in request.FILES else './static/default.png'
+        cover = request.FILES['capa'] if 'capa' in request.FILES else './static/default_cover.png'
+        new = Noticia(titulo=title,descricao=description, arquivo=file,capa=cover)
+        new.save()
+        sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=3000)
+    except Exception as ex:
+            print(ex)
+            sweetify.error(request, 'Erro ao Adicionar a Notícia !\nCódigo:'+str(ex), timer=3000)
+            return ex
+    #else: return 401  # Unauthorized
+    #return render(request, 'noticias/edit.html', {code: code, error: error})
 
 def destroy(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None

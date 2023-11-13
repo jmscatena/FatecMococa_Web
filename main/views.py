@@ -1,7 +1,11 @@
 from django.shortcuts import render
 
+from news.models import Noticia
+
+
 def home(request):
-    return render(request,'base/index.html')
+    noticias = Noticia.objects.all() if Noticia.objects.all() is not None else None
+    return render(request,'base/index.html',{'noticias':noticias})
 
 
 def cursos(request,nome):

@@ -1,4 +1,5 @@
 {% extends 'base/main.html'%}
+
 {% block content %}
 
   <br>
@@ -8,23 +9,25 @@
       <div class="linha"></div>
     </header>
     <br>
+
     <form id="form" method="POST" action="{% url 'news_edit' %}">
+      {% csrf_token %}
       <div class="entry-content" style="width:95%!important" >
         <div class="form-group">
             <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo">
+            <input type="text" class="form-control" id="titulo" name="titulo">
         </div>
         <div class="form-group">
             <label for="capa">Imagem de Exibição</label>
-            <input type="file" class="form-control" id="capa">
+            <input type="file" class="form-control" id="capa" name="capa">
         </div>
         <div class="form-group">
             <label for="anexo">Arquivo Anexado</label>
-            <input type="file" class="form-control" id="anexo">
+            <input type="file" class="form-control" id="anexo" name="anexo">
         </div>
         <div class="form-group">
           <label for="editor">Descrição</label>
-          <textarea id="editor" ></textarea>
+          <textarea id="editor" name="descricao"></textarea>
         </div>
         <br>
         <div class="form-group text-center">
@@ -37,19 +40,7 @@
   <br>
   <br>
   <br>
-<script>
 
 
-  {% if code == 200 %}
-   Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              timer: 1500
-            });
-  {% endif %}
-
-</script>
 {% endblock content%}
 
