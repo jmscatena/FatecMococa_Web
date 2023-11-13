@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+import sweetify
 # Create your views here.
 
 def index(request,pk=None):
@@ -31,9 +32,11 @@ def create(request):
             cover = request.FILES['capa'] if 'capa' in request.POST else './static/default_cover.png'
             new = Noticia(titulo=title,descricao=description, arquivo=file,capa=cover)
             new.save()
-            code = 201
+            code=201
+            sweetify.toast(request, 'Adicionado com Sucesso!!!', icon="success", timer=3000)
         except Exception as ex:
                 print(ex)
+                sweetify.toast(request, 'Error ao Adicionar!', icon="error", timer=3000)
                 code = ex
     else: code = 401  # Unauthorized
     return render(request, 'noticias/edit.html', {code: code, error: error})
