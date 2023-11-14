@@ -138,14 +138,17 @@
 						{% for n in news %}
 						<tr>
 							<td style="margin-left:10px;">
-								<div class="card">
+								<div class="card img-news">
 									<div class="card-body">
 										<br>
 									</div>
 								</div>
 							</td>
 							<td>
-								{{n.titulo}}
+								<a href="{% url 'news_index'%}{{n.id}}" class="text-news">{{n.titulo}}</a>
+								<br>
+								<br>
+								<i class="fa-solid fa-calendar-days calendar-news">&nbsp;{{n.data_publicacao}}</i>
 							</td>
 						</tr>
 						{% endfor %}

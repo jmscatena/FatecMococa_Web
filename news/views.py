@@ -7,11 +7,11 @@ def index(request,pk=None):
     noticias = []
     if request.method == 'POST':
         create(request)
-    elif request.method == 'GET':
+    elif request.method == 'GET' and pk is None:
         noticias = Noticia.objects.all()
         return render(request, 'noticias/index.html',{noticias:noticias})
     elif request.method == 'GET' and pk is not None:
-        select(request, pk)
+        return render(request,'noticias/noticia.html',{'news':select(request,pk)})
     elif request.method == 'PATCH':
         update(request,pk)
     elif request.method == 'DELETE':
@@ -60,7 +60,7 @@ def destroy(request,pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    return render(request, 'noticias/index.html', {'code': code, 'error': error})
 
 def update(request, pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -84,37 +84,38 @@ def update(request, pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    return render(request, 'noticias/index.html', {'code': code, 'error': error})
 
 def select(request,pk=None):
-    tk = request.session['tk'] if 'tk' in request.session else None
-    error = None
-    if tk is not None:
+    #tk = request.session['tk'] if 'tk' in request.session else None
+        error = None
+    #if tk is not None:
         if pk is not None:
             try:
-                new = Noticia.object.get(id=pk)
-                if new is not None:
+                news = Noticia.objects.get(id=int(pk))
+                if news is not None:
                     code = 200  # OK
-                    return render(request, 'noticias/index.html', {code: code, new:new})
+                    return news
                 else:
                     code = 404 # Not Found
+                    return None
             except Exception as ex:
                     print(ex)
                     code= 403 # Forbidden
                     error = ex
         else: code = 405 # Not Allowed
-    else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    #else: code = 401 # Unauthorized
+        return render(request, 'noticias/index.html', {'code': code, 'error': error})
 def list(request):
     try:
         news = Noticia.objects.all()
         code = 200  # OK
-        return render(request, 'noticias/index.html', {code: code, news:news})
+        return render(request, 'noticias/index.html', {'code': code, 'news':news})
     except Exception as ex:
             print(ex)
             code= 403 # Forbidden
             error = ex
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    return render(request, 'noticias/index.html', {'code': code, 'error': error})
 
     '''
     tk = request.session['tk'] if 'tk' in request.session else None
