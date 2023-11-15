@@ -56,7 +56,7 @@
 			<div class="card card-courses w-90">
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/ads_logo.png' %}"/>
-					<br><br>
+					<br>
 					<h5 class="card-text">Análise e Desenvolvimento de Sistemas</h5>
 				</div>
 			</div>
@@ -67,7 +67,6 @@
 			<div class="card card-courses w-90">
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/ads_logo_ams.png' %}"/>
-					<br>
 					<h5 class="card-text">Análise e Desenvolvimento de Sistemas</h5>
 					<h5 class="card-text">(AMS)</h5>
 				</div>
@@ -102,7 +101,7 @@
 		  <div class="card card-courses w-90">
 				<div class="card-body">
 					<img src="{% static '/imagens/cursos/gestao_logo.jpg' %}"/>
-					<br><br>
+					<br>
 					<h5 class="card-text">Gestão Empresarial</h5>
 					<h5 class="card-text">(EAD)</h5>
 				</div>
@@ -114,7 +113,7 @@
 		  <div class="card card-courses w-90">
 				<div class="card-body">
 					<img src="{% static 'imagens/cursos/grh_logo.jpg' %}"/>
-					<br><br>
+					<br>
 					<h5 class="card-text">Gestão de Recursos Humanos</h5>
 				</div>
 			</div>
@@ -135,6 +134,7 @@
 	<div class="row container">
 		<div class="card card-news" style="margin-top:10px;width:70%;">
 				<div class="card-body">
+					{% if n is not None%}
 					<table class="no-border">
 						{% for n in news %}
 						<tr>
@@ -154,6 +154,9 @@
 						</tr>
 						{% endfor %}
 					</table>
+					{% else %}
+					<h3>Nenhuma Notícia</h3>
+					{% endif %}
 				</div>
 		  </div>
 	 </div>
