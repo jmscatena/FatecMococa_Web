@@ -10,7 +10,7 @@
     </header>
     <br>
 
-    <form id="form" method="POST" action="{% url 'news_edit' %}">
+    <form role="form" id="form" method="post" action="{% url 'news_edit' %}"  enctype="multipart/form-data">
       {% csrf_token %}
       <div class="entry-content" style="width:95%!important" >
         <div class="form-group">

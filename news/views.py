@@ -1,4 +1,11 @@
+import os
+from typing import Dict
+
+from django.core.files.storage import FileSystemStorage
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.shortcuts import render
+from django.utils.text import slugify
+
 from .models import *
 import sweetify
 # Create your views here.
@@ -30,14 +37,28 @@ def create(request):
     try:
         title = request.POST['titulo']
         description = request.POST['descricao']
-        file = request.FILES['anexo'] if 'arquivo' in request.FILES else './static/default.png'
-        cover = request.FILES['capa'] if 'capa' in request.FILES else './static/default_cover.png'
-        new = Noticia(titulo=title,descricao=description, arquivo=file,capa=cover)
+        if 'capa' in request.FILES:
+            cover = request.FILES['capa']
+            basename, extension = os.path.splitext(os.path.basename(request.FILES['capa'].name))
+            cover_nome = slugify(basename) + extension
+            cover_up = SimpleUploadedFile(cover_nome, cover.read())
+            cover_data: Dict[str, str]
+        else:
+            cover_up = './static/default_cover.png'
+        if 'anexo' in request.FILES:
+            attach = request.FILES['anexo']
+            basename, extension = os.path.splitext(os.path.basename(request.FILES['anexo'].name))
+            attach_nome = slugify(basename) + extension
+            attach_up = SimpleUploadedFile(attach_nome, attach.read())
+            attach_data: Dict[str, str]
+        else:
+            attach_up = './static/default.png'
+        new = Noticia(titulo=title,descricao=description, arquivo=attach_up,capa=cover_up)
         new.save()
-        sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=3000)
+        sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=5000)
     except Exception as ex:
             print(ex)
-            sweetify.error(request, 'Erro ao Adicionar a Notícia !\nCódigo:'+str(ex), timer=3000)
+            sweetify.error(request, 'Erro ao Adicionar a Notícia !\nCódigo:'+str(ex), timer=10000)
             return ex
     #else: return 401  # Unauthorized
     #return render(request, 'noticias/edit.html', {code: code, error: error})
@@ -133,3 +154,4 @@ def list(request):
     else: code = 401 # Unauthorized
     return render(request, 'noticias/index.html', {code: code, error: error})
     '''
+
