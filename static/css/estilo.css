@@ -36,6 +36,7 @@
 }
 .dropdown-item a{
     font-family: 'Rubik', sans-serif!important;
+    font-size:1.1em!important;
 }
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus{
