@@ -285,7 +285,7 @@ p{
     box-shadow: 3px 4px #888888!important;
 }
 
-.img-news{
+.img-news, .img-news img{
     width:130px;
     height:130px;
 
