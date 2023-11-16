@@ -50,6 +50,8 @@
 
 .navbar .nav-item{
     font-family: 'Rubik', sans-serif;
+    font-size:1.1em!important;
+
 }
 /* Card */
 .cards {
