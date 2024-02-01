@@ -1,6 +1,9 @@
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
 from main.views import *
 from news.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home),
@@ -8,9 +11,14 @@ urlpatterns = [
     path('institucional/<str:nome>', institucional,name='institucional'),
     path('alunos/<str:nome>', alunos,name='alunos'),
     path('professores/<str:nome>', professores,name='professores'),
-    path('noticias/', index,name='news_index'),
+    path('noticias/', index,name='news_404'),
+    path('noticias/edit/', index,name='news_index'),
     path('noticias/<int:pk>', index),
-    path('noticias/edit/', edit,name='news_edit'),
+    path('noticias/add/', edit,name='news_edit'),
 
 
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns += staticfiles_urlpatterns()

@@ -41,7 +41,7 @@ def create(request):
                 print(ex)
                 code = ex
     else: code = 401  # Unauthorized
-    return render(request, 'paginas/index.html', {code: code, error: error})
+    return render(request, 'paginas/edit.html', {code: code, error: error})
 
 def destroy(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -61,7 +61,7 @@ def destroy(request,pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'paginas/index.html', {code: code, error: error})
+    return render(request, 'paginas/edit.html', {code: code, error: error})
 
 def update(request, pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -90,7 +90,7 @@ def update(request, pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'paginas/index.html', {code: code, error: error})
+    return render(request, 'paginas/edit.html', {code: code, error: error})
 
 def select(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -101,7 +101,7 @@ def select(request,pk=None):
                 page = Pagina.object.get(id=pk)
                 if page is not None:
                     code = 200  # OK
-                    return render(request, 'paginas/index.html', {code: code, page:page})
+                    return render(request, 'paginas/edit.html', {code: code, page:page})
                 else:
                     code = 404 # Not Found
             except Exception as ex:
@@ -110,7 +110,7 @@ def select(request,pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'paginas/index.html', {code: code, error: error})
+    return render(request, 'paginas/edit.html', {code: code, error: error})
 def list(request):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
@@ -120,7 +120,7 @@ def list(request):
             pages = Pagina.objects.all()
             if pages is not None:
                 code = 200  # OK
-                return render(request, 'paginas/index.html', {code: code, pages:pages})
+                return render(request, 'paginas/edit.html', {code: code, pages:pages})
             else:
                 code = 404 # Not Found
         except Exception as ex:
@@ -128,5 +128,5 @@ def list(request):
                 code= 403 # Forbidden
                 error = ex
     else: code = 401 # Unauthorized
-    return render(request, 'paginas/index.html', {code: code, error: error})
+    return render(request, 'paginas/edit.html', {code: code, error: error})
 

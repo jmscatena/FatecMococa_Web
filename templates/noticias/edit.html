@@ -1,46 +1,54 @@
 {% extends 'base/main.html'%}
 
 {% block content %}
-
   <br>
   <main>
     <header class="entry-header">
-      <h1 class="entry-title">Editor Notícias</h1>
+      <h1 class="entry-title">Notícias</h1>
       <div class="linha"></div>
     </header>
     <br>
+    <div id="news-entry-content">
+      <table id="tabela" class="table table-hover text-wrap">
+        <thead>
+        <tr >
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Anexos</th>
+          <th>Imagem</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
 
-    <form role="form" id="form" method="post" action="{% url 'news_edit' %}"  enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="entry-content" style="width:95%!important" >
-        <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo">
-        </div>
-        <div class="form-group">
-            <label for="capa">Imagem de Exibição</label>
-            <input type="file" class="form-control" id="capa" name="capa">
-        </div>
-        <div class="form-group">
-            <label for="anexo">Arquivo Anexado</label>
-            <input type="file" class="form-control" id="anexo" name="anexo">
-        </div>
-        <div class="form-group">
-          <label for="editor">Descrição</label>
-          <textarea id="editor" name="descricao"></textarea>
-        </div>
-        <br>
-        <div class="form-group text-center">
-          <input type="submit" name="save" id="save" class="btn btn-info rounded-pill " value="Publicar">
-        </div>
-        <br>
-      </div>
-    </form>
+        <tbody>
+          {% for n in noticias %}
+          <tr>
+            <td>{{n.titulo}}</td>
+            <td>
+                {% autoescape off %}
+                   {{n.descricao}}
+                {% endautoescape %}
+            </td>
+            <td>{{n.anexos}}</td>
+            <td>
+
+                  <img id="news-capa" src="./../../media/{{n.capa}}">
+
+            </td>
+            <td>
+              <button name="del" id="del" class="btn btn-danger"><i class="fas fa-eraser"></i></button>
+              <button name="edit" id="edit" class="btn btn-success "><i class="fas fa-pencil-alt"></i></button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <br>
+    </div>
   </main>
   <br>
   <br>
   <br>
-
 
 {% endblock content%}
 

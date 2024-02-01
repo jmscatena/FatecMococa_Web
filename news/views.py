@@ -1,24 +1,24 @@
 import os
 from typing import Dict
 
-from django.core.files.storage import FileSystemStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.shortcuts import render
 from django.utils.text import slugify
 
 from .models import *
 import sweetify
-# Create your views here.
 
 def index(request,pk=None):
     noticias = []
+    if request.path == '/noticias/':
+        return render(request,'errors/404.html')
     if request.method == 'POST':
         create(request)
     elif request.method == 'GET' and pk is None:
         noticias = Noticia.objects.all()
-        return render(request, 'noticias/index.html',{noticias:noticias})
-    elif request.method == 'GET' and pk is not None:
-        return render(request,'noticias/noticia.html',{'news':select(request,pk)})
+        return render(request, 'noticias/edit.html',{'noticias':noticias})
+#    elif request.method == 'GET' and pk is not None:
+#        return render(request,'noticias/noticia.html',{'news':select(request,pk)})
     elif request.method == 'PATCH':
         update(request,pk)
     elif request.method == 'DELETE':
@@ -29,11 +29,12 @@ def index(request,pk=None):
 def edit(request):
     if request.method == "POST":
         create(request)
-    return render(request,'noticias/edit.html')
+    return render(request,'noticias/add.html')
 def create(request):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
     #if tk != None:
+
     try:
         title = request.POST['titulo']
         description = request.POST['descricao']
@@ -53,6 +54,7 @@ def create(request):
             attach_data: Dict[str, str]
         else:
             attach_up = './static/default.png'
+        print(cover_up)
         new = Noticia(titulo=title,descricao=description, arquivo=attach_up,capa=cover_up)
         new.save()
         sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=5000)
@@ -61,7 +63,7 @@ def create(request):
             sweetify.error(request, 'Erro ao Adicionar a Notícia !\nCódigo:'+str(ex), timer=10000)
             return ex
     #else: return 401  # Unauthorized
-    #return render(request, 'noticias/edit.html', {code: code, error: error})
+    #return render(request, 'noticias/add.html', {code: code, error: error})
 
 def destroy(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -81,7 +83,7 @@ def destroy(request,pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {'code': code, 'error': error})
+    return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
 def update(request, pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -105,7 +107,7 @@ def update(request, pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {'code': code, 'error': error})
+    return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
 def select(request,pk=None):
     #tk = request.session['tk'] if 'tk' in request.session else None
@@ -126,17 +128,17 @@ def select(request,pk=None):
                     error = ex
         else: code = 405 # Not Allowed
     #else: code = 401 # Unauthorized
-        return render(request, 'noticias/index.html', {'code': code, 'error': error})
+        return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 def list(request):
     try:
         news = Noticia.objects.all()
         code = 200  # OK
-        return render(request, 'noticias/index.html', {'code': code, 'news':news})
+        return render(request, 'noticias/edit.html', {'code': code, 'news':news})
     except Exception as ex:
             print(ex)
             code= 403 # Forbidden
             error = ex
-    return render(request, 'noticias/index.html', {'code': code, 'error': error})
+    return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
     '''
     tk = request.session['tk'] if 'tk' in request.session else None
@@ -146,12 +148,12 @@ def list(request):
         try:
             news = Noticia.objects.all()
             code = 200  # OK
-            return render(request, 'noticias/index.html', {code: code, news:news})
+            return render(request, 'noticias/edit.html', {code: code, news:news})
         except Exception as ex:
                 print(ex)
                 code= 403 # Forbidden
                 error = ex
     else: code = 401 # Unauthorized
-    return render(request, 'noticias/index.html', {code: code, error: error})
+    return render(request, 'noticias/edit.html', {code: code, error: error})
     '''
 

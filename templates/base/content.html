@@ -145,12 +145,20 @@
 		<div class="card card-news" style="margin-top:10px;width:70%;">
 				<div class="card-body">
 					{% if news is not None%}
-					<table class="no-border">
+				    <div class="entry-content">
+				      <table id="tabela" class="table table-hover text-nowrap no-border">
+					<!--<table class="no-border">-->
+						<thead>
+							<tr style="display:none;">
+								  <th>Imagem</th>
+								  <th>Descrição</th>
+							</tr>
+        				</thead>
 						{% for n in news %}
 						<tr>
 							<td style="margin-left:10px;">
 								<div class="card img-news">
-									<img src="./media/{{n.capa}}">
+									<img src="media/{{n.capa}}">
 								</div>
 							</td>
 							<td>
@@ -161,7 +169,8 @@
 							</td>
 						</tr>
 						{% endfor %}
-					</table>
+					   </table>
+					</div>
 					{% else %}
 					<h3>Nenhuma Notícia</h3>
 					{% endif %}

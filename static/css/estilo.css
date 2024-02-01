@@ -215,6 +215,7 @@ main{
 }
 .extra{
     width:75%;
+
 }
 #emec, #emecqrcode{
     margin:0 auto auto auto;
@@ -302,4 +303,53 @@ p{
     font-family: 'Rubik', sans-serif;
     font-size:1.2em;
     text-align:left;
+}
+/* Noticias */
+#tabela{
+    width:100%;
+    height:100%;
+    vertical-align:middle;
+}
+#tabela td{
+    width:20%;
+}
+#news-entry-content{
+    margin:0 auto;
+    width:90%;
+    padding-top:1%;
+    font-family: 'Rubik', sans-serif;
+    font-size:1.2em;
+    text-align:left;
+}
+
+#news-entry-content table td{
+    vertical-align:middle!important;
+}
+#news-capa{
+    width:30%;
+    height:30%!important;
+}
+
+/* Errors PAGE */
+.errors{
+    width: 18rem!important;
+    position:absolute!important;
+    margin:10% 50% 0 40%!important;
+    border-radius: 25% 10%!important;
+    padding:0;
+    background-color:red;
+
+}
+.card-img-top{
+    border-radius: 25% 10%!important;
+}
+.errors-card-title, .errors-card-text{
+    color:white;
+    font-weight:bold;
+}
+#errors-title{
+    font-family: 'Arvo', serif;
+    position:absolute;
+    margin-top: 10px;
+    margin-left:35%;
 }

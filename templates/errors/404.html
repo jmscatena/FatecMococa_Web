@@ -5,32 +5,16 @@
     <meta charset="UTF-8">
     <title>Página Não Encontrada</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .errors{
-            width: 18rem!important;
-            position:absolute!important;
-            margin:10% 0 0 50%!important;
-            border-radius: 25% 10%!important;
-            padding:0;
-            background-color:red;
-
-        }
-        .card-img-top{
-            border-radius: 25% 10%!important;
-        }
-        .card-title, .card-text{
-            color:white;
-            font-weight:bold;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static '/css/estilo.css' %}">
 </head>
 <body style="background-color:lightgray;">
     <br>
-    <div class="card errors c">
-      <img class="card-img-top" src="{% static 'imagens/errors/404.png' %}" alt="404 Error">
+    <div class="card errors">
+        <h1 id="errors-title">404</h1>
+        <img class="card-img-top" src="{% static 'imagens/errors/404.gif' %}" alt="404 Error">
       <div class="card-body">
-        <h5 class="card-title">Página não Encontrada</h5>
-        <p class="card-text">Desculpe o transtorne e retorne mais tarde</p>
+        <h5 class="errors-card-title">Página não Encontrada</h5>
+        <p class="errors-card-text">Desculpe o transtorne e retorne mais tarde</p>
       <br>
       </div>
 </div>
