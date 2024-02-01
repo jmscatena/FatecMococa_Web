@@ -4,7 +4,7 @@
     background-color: white!important;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
-    height: 100px;
+    height: 20%;
     margin-top:5px;
     margin-left: auto;
     margin-right: auto;
@@ -224,9 +224,14 @@ main{
     justify-content: flex-end;
 }
 
+#logo{
+    width:19%;
+    height:19%;
+}
 .logos{
     align-self:center;
 }
+
 #logosp{
     background-color:#000e4b;
     margin:2% auto;
