@@ -48,13 +48,25 @@
       <br>
     </div>
   </main>
-  <div class="modal fade" id="editModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <div class="modal fade" id="editModal" aria-hidden="true" style="z-index:100000000;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <br>
-          <br>
-          <br>
+
+          <div class="entry-content" style="width:95%!important" >
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo">
+            </div>
+            <div class="form-group">
+                <label for="capa">Imagem de Exibição</label>
+                <input type="file" class="form-control" id="capa" name="capa">
+            </div>
+            <div class="form-group">
+              <label for="editor">Descrição</label>
+              <textarea id="editor" name="descricao"></textarea>
+            </div>
+          </div>
           <br>
           <center>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -68,13 +80,26 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-          <br>
-          <br>
-          <br>
+
+          <div class="entry-content" style="width:95%!important" >
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" id="rem-titulo" name="titulo" disabled>
+            </div>
+            <div class="form-group">
+              <label for="editor">Descrição</label>
+              <input type="text" class="form-control" id="rem-descricao" disabled>
+            </div>
+            <br>
+            <div class="form-group">
+                <h3 style="text-align:center">Tem Certeza que Deseja Excluir?</h3>
+            </div>
+
+          </div>
           <br>
           <center>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" style="width:80px!important;">Excluir</button>
           </center>
         </div>
       </div>
