@@ -4,7 +4,7 @@
     background-color: white!important;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
-    height: 20%;
+    height: 30%;
     margin-top:5px;
     margin-left: auto;
     margin-right: auto;
@@ -226,8 +226,8 @@ main{
 }
 
 #logo{
-    width:19%;
-    height:19%;
+    width:21%;
+    height:21%;
 }
 .logos{
     align-self:center;
