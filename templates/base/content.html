@@ -161,7 +161,7 @@
 								</div>
 							</td>
 							<td>
-								<a href="{% url 'news_index'%}{{n.id}}" class="text-news">{{n.titulo}}</a>
+								<a href="{% url 'news_show' n.id %}" class="text-news">{{n.titulo}}</a>
 								<br>
 								<br>
 								<i class="fa-solid fa-calendar-days calendar-news">&nbsp;{{n.data_publicacao}}</i>

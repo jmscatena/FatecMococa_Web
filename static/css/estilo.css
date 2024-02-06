@@ -313,6 +313,12 @@ p{
 #tabela td{
     width:20%;
 }
+#tabela-edit{
+    width:100%;
+    height:100%;
+    vertical-align:middle;
+}
+
 #news-entry-content{
     margin:0 auto;
     width:90%;

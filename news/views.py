@@ -17,8 +17,8 @@ def index(request,pk=None):
     elif request.method == 'GET' and pk is None:
         noticias = Noticia.objects.all()
         return render(request, 'noticias/edit.html',{'noticias':noticias})
-#    elif request.method == 'GET' and pk is not None:
-#        return render(request,'noticias/noticia.html',{'news':select(request,pk)})
+    elif request.method == 'GET' and pk is not None:
+        return render(request,'noticias/noticia.html',{'news':select(request,pk)})
     elif request.method == 'PATCH':
         update(request,pk)
     elif request.method == 'DELETE':

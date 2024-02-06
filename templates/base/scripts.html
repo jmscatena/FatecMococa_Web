@@ -35,6 +35,30 @@
                                                      },
                                 }
                              });
+       $('#tabela-edit').DataTable({
+                                pageLength: 10,
+                                info: true,
+                                ordering: true,
+                                paging: true,
+                                searching: false,
+                                autoWidth: false,
+                                responsive: true,
+                                lengthChange: false,
+                                language: {
+                                        info: 'Página _PAGE_ de _PAGES_',
+                                        infoEmpty: 'Sem Informações',
+                                        infoFiltered: '(filtered from _MAX_ total records)',
+                                        lengthMenu: 'Exibindo _MENU_ Registros por Páginas',
+                                        zeroRecords: 'Não Encontrado- sorry',
+                                        "paginate": {
+                                                      "first":      "Primeiro",
+                                                       "last":       "Último",
+                                                       "next":       "Próximo",
+                                                       "previous":   "Anterior"
+                                                     },
+                                }
+                             });
+
 		document.addEventListener("DOMContentLoaded", function() {
 		  var dropdownMenuList = document.querySelectorAll(".dropdown-menu");
 		  var dropdownToggleList = document.querySelectorAll(".dropdown-menu");

@@ -13,7 +13,7 @@ urlpatterns = [
     path('professores/<str:nome>', professores,name='professores'),
     path('noticias/', index,name='news_404'),
     path('noticias/edit/', index,name='news_index'),
-    path('noticias/<int:pk>', index),
+    path('noticias/<int:pk>', index, name='news_show'),
     path('noticias/add/', edit,name='news_edit'),
 
 
