@@ -335,7 +335,9 @@ p{
     width:30%;
     height:30%!important;
 }
-
+.btn-success{
+    width:130px!important;
+}
 /* Errors PAGE */
 .errors{
     width: 18rem!important;

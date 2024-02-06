@@ -37,8 +37,8 @@
               <button name="del" id="del" class="btn btn-danger" data-toggle="modal"
                       data-target="#removeModal"><i class="fas fa-eraser"></i>
               </button>
-              <button name="edit" id="edit" class="btn btn-success" data-bs-toggle="modal"
-                      data-bs-target="#editModal"><i class="fas fa-pencil-alt"></i>
+              <button name="edit" id="edit" class="btn btn-success" data-toggle="modal"
+                      data-target="#editModal"><i class="fas fa-pencil-alt"></i>
               </button>
             </td>
           </tr>
@@ -48,28 +48,34 @@
       <br>
     </div>
   </main>
-  <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="editModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
+          <br>
+          <br>
+          <br>
+          <br>
+          <center>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" style="width:80px!important;">Salvar</button>
+          </center>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="removeModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="removeModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Confirmar</button>
+          <br>
+          <br>
+          <br>
+          <br>
+          <center>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success">Confirmar</button>
+          </center>
         </div>
       </div>
     </div>
