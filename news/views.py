@@ -9,7 +9,6 @@ from django.utils.text import slugify
 from .models import *
 import sweetify
 
-@login_required
 def index(request,pk=None):
     noticias = []
     if request.path == '/noticias/':
