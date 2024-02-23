@@ -2,7 +2,8 @@
 
 {% block content %}
   <br>
-  <p>Usuário: {{request.session['nome']}}</p>
+  <h5 class="hello">Editor:&nbsp;&nbsp;&nbsp;{{request.session.nome}}</h5>
+  <input type="button" id="desconect" class="btn btn-danger" value="Desconectar">
   <main>
     <header class="entry-header">
       <h1 class="entry-title">Editor de Notícias</h1>
