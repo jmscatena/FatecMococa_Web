@@ -2,10 +2,9 @@
 
 {% block content %}
   <br>
-  <p>Usuário: {{request.session['nome']}}</p>
   <main>
     <header class="entry-header">
-      <h1 class="entry-title">Editor de Notícias</h1>
+      <h1 class="entry-title">Usuários do Sistema</h1>
       <div class="linha"></div>
     </header>
     <br>
@@ -13,26 +12,21 @@
       <table id="tabela-edit" class="table table-hover text-wrap">
         <thead>
         <tr >
-          <th style="width:20%">Título</th>
-          <th style="width:35%">Descrição</th>
-          <th style="width:15%;text-align:center">Anexos</th>
-          <th style="text-align:center">Imagem</th>
+          <th style="width:20%">Nome</th>
+          <th style="width:35%">Email</th>
+          <th style="width:15%;text-align:center">Status</th>
+          <th style="text-align:center">Classe</th>
           <th style="width:10%">Ações</th>
         </tr>
         </thead>
-
         <tbody>
-          {% for n in noticias %}
+          {% for u in usuarios %}
           <tr>
-            <td>{{n.titulo}}</td>
-            <td>
-                {% autoescape off %}
-                   {{n.descricao}}
-                {% endautoescape %}
-            </td>
-            <td>{{n.anexos}}</td>
+            <td>{{u.nome}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.ativo}}</td>
             <td style="text-align:center">
-                  <img id="news-capa" src="./../../media/{{n.capa}}">
+                  {{u.is_superuser}}
             </td>
             <td>
               <button name="del" id="del" class="btn btn-danger" data-toggle="modal"
@@ -53,20 +47,20 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-
           <div class="entry-content" style="width:95%!important" >
             <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="name">
             </div>
             <div class="form-group">
-                <label for="capa">Imagem de Exibição</label>
-                <input type="file" class="form-control" id="capa" name="capa">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="key">
             </div>
             <div class="form-group">
-              <label for="editor">Descrição</label>
-              <textarea id="editor" name="descricao"></textarea>
+              <label for="email">Email Institucional</label>
+              <input type="email" id="email" name="email">
             </div>
+            <br>
           </div>
           <br>
           <center>
@@ -81,21 +75,19 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
-
           <div class="entry-content" style="width:95%!important" >
             <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="rem-titulo" name="titulo" disabled>
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="del-nome" name="del-name">
             </div>
             <div class="form-group">
-              <label for="editor">Descrição</label>
-              <input type="text" class="form-control" id="rem-descricao" disabled>
+              <label for="email">Email Institucional</label>
+              <input type="email" id="del-email" name="del-email">
             </div>
             <br>
             <div class="form-group">
                 <h3 style="text-align:center">Tem Certeza que Deseja Excluir?</h3>
             </div>
-
           </div>
           <br>
           <center>

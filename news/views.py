@@ -1,6 +1,7 @@
 import os
 from typing import Dict
 
+from django.contrib.auth.decorators import login_required
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.shortcuts import render
 from django.utils.text import slugify
@@ -8,6 +9,7 @@ from django.utils.text import slugify
 from .models import *
 import sweetify
 
+@login_required
 def index(request,pk=None):
     noticias = []
     if request.path == '/noticias/':
@@ -25,11 +27,12 @@ def index(request,pk=None):
         destroy(request,pk)
     else:
         return render(request,'errors/404.html')
-
+@login_required
 def edit(request):
     if request.method == "POST":
         create(request)
     return render(request,'noticias/add.html')
+@login_required
 def create(request):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
@@ -65,6 +68,7 @@ def create(request):
     #else: return 401  # Unauthorized
     #return render(request, 'noticias/add.html', {code: code, error: error})
 
+@login_required
 def destroy(request,pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
@@ -85,6 +89,7 @@ def destroy(request,pk=None):
     else: code = 401 # Unauthorized
     return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
+@login_required
 def update(request, pk=None):
     tk = request.session['tk'] if 'tk' in request.session else None
     error = None
@@ -109,6 +114,7 @@ def update(request, pk=None):
     else: code = 401 # Unauthorized
     return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
+@login_required
 def select(request,pk=None):
     #tk = request.session['tk'] if 'tk' in request.session else None
         error = None
@@ -129,6 +135,7 @@ def select(request,pk=None):
         else: code = 405 # Not Allowed
     #else: code = 401 # Unauthorized
         return render(request, 'noticias/edit.html', {'code': code, 'error': error})
+@login_required
 def list(request):
     try:
         news = Noticia.objects.all()

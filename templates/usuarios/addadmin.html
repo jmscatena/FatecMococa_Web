@@ -1,0 +1,41 @@
+{% extends 'base/main.html'%}
+
+{% block content %}
+<br>
+<main>
+    <header class="entry-header">
+        <h1 class="entry-title extra">Administradores</h1>
+        <div class="linha"></div>
+    </header>
+    <br>
+    <div class="entry-content">
+        <h3 style="text-align:center;">Cadastro de Adminstradores</h3>
+        <br>
+        <form role="form" id="form" method="post" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="entry-content" style="width:65%!important" >
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="name">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="key">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Institucional</label>
+              <input type="email" id="email" name="email" class="form-control">
+            </div>
+            <br>
+            <div class="form-group text-center">
+              <input type="submit" name="save" id="save" class="btn btn-info rounded-pill " value="Salvar">
+              <input type="reset" name="clear" id="clear" class="btn btn-danger rounded-pill " value="Limpar">
+            </div>
+            <br>
+          </div>
+        </form>
+        <br>
+    </div>
+</main>
+<br>
+{% endblock content%}

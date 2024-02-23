@@ -15,8 +15,9 @@ urlpatterns = [
     path('noticias/edit/', index,name='news_index'),
     path('noticias/<int:pk>', index, name='news_show'),
     path('noticias/add/', edit,name='news_edit'),
-
-
+    path('usuarios/<str:nome>', usuarios,name='users_add'),
+    path('usuarios/', usuarios,name='users_manage'),
+    path('accounts/login/', error,name='404'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
