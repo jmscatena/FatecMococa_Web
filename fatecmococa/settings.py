@@ -79,8 +79,12 @@ SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'data',
+        'USER': 'postgres',
+        'PASSWORD': 'kfn3n90',
+        'HOST': 'localhost',
+        'PORT': '5432', # default PostgreSQL port
     }
 }
 

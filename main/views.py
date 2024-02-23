@@ -15,6 +15,7 @@ def login(request):
             username = authenticate(username=request.POST['user'], password=request.POST['pwd'])
             if username is not None:
                 user = User.objects.get(username=username)
+                print(user.is_superuser)
                 request.session.set_expiry(180)
                 request.session['nome'] = user.first_name
                 return render(request,'noticias/edit.html')
@@ -58,9 +59,10 @@ def professores(request, nome):
     page = 'professores/'+nome+'.html' if nome in paginas else 'errors/404.html'
     return render(request,page)
 
-@login_required
-@user_passes_test(lambda u: u.is_superuser, login_url='/error')
+#   @login_required
+#@user_passes_test(lambda u: u.is_superuser, login_url='/error')
 def usuarios(request, nome=None):
+    print(request.user)
     paginas = {'editor','admin'}
     if nome is not None:
         if (nome in paginas) and request.method == 'GET':
