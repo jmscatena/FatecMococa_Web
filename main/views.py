@@ -6,23 +6,29 @@ from django.shortcuts import render, redirect
 from news.models import Noticia
 
 def login(request):
-    u = User.objects.get(username=request.POST["user"])
-    if {'user','pwd'} in request.POST:
-        user = authenticate(username=request.POST['user'], password=request.POST['pwd'])
-        if user is not None:
-            request.session.set_expiry(180)
-            request.session['nome'] = user.first_name
-            return render(request,'noticias/edit.html')
-        return render(request,'login/login.html',context={'error':'Acesso Negado!'})
-    else:
-        return render(request,'login/login.html',context={'error':'Acesso Negado!'})
+    if request.method == 'GET':
+        return render(request, 'login/index.html')
+    elif request.method == 'POST':
+        u = User.objects.get(username=request.POST["user"])
+        dados = {'user','pwd'}
+        if ('user' in request.POST) and ('pwd' in request.POST):
+            username = authenticate(username=request.POST['user'], password=request.POST['pwd'])
+            if username is not None:
+                user = User.objects.get(username=username)
+                request.session.set_expiry(180)
+                request.session['nome'] = user.first_name
+                return render(request,'noticias/edit.html')
+            return render(request,'login/login.html',context={'error':'Acesso Negado!'})
+        else:
+            return render(request,'login/login.html',context={'error':'Acesso Negado!'})
+    else: return render(request,'errors/404.html')
 
 def logout(request):
     try:
         request.session.flush()
     except KeyError:
         pass
-    return render(request,'login/logout.html')
+    return render(request,'home')
 
 
 def home(request):
