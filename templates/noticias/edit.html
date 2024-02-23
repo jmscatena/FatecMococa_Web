@@ -3,13 +3,15 @@
 {% block content %}
   <br>
   <h5 class="hello">Editor:&nbsp;&nbsp;&nbsp;{{request.session.nome}}</h5>
-  <input type="button" id="disconect" onclick="logout()" class="btn btn-danger" value="Desconectar">
+  <input type="button" id="disconect" class="btn btn-danger" value="Desconectar" onclick="logout()">
   <main>
     <header class="entry-header">
       <h1 class="entry-title">Editor de Notícias</h1>
       <div class="linha"></div>
     </header>
     <br>
+    <form class="form" ></form>
+    {% csrf_token %}
     <div id="news-entry-content">
       <table id="tabela-edit" class="table table-hover text-wrap">
         <thead>
@@ -113,12 +115,8 @@
   <br>
 <script>
   function logout(){
-      $.ajax({
-              type: "GET",
-              url: "{% url 'logout'%}",
-              dataType: "json"
-            }).done(function(result){console.log(result)});
-  };
+     window.location.href = "{% url 'logout' %}";
+  }
 </script>
 {% endblock content%}
 

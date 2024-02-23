@@ -28,7 +28,7 @@ def logout(request):
         request.session.flush()
     except KeyError:
         pass
-    return render(request,'home')
+    return home(request)
 
 
 def home(request):
