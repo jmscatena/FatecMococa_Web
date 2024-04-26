@@ -41,6 +41,10 @@ def cursos(request,nome):
     page = 'cursos/'+nome+'.html' if nome in cursos else 'errors/404.html'
     return render(request,page)
 
+def grades(request,nome):
+    cursos = {'agro','ads','ads_ams','gti','ge','ge_ead','grh'}
+    page = 'cursos/grades/'+nome+'.html' if nome in cursos else 'errors/404.html'
+    return render(request,page)
 
 def institucional(request, nome):
     paginas = {'secretaria','calendario','cpa','cepe','cipa','congregacao','contas','convenios','diretoria','ds','quemsomos','ti'}

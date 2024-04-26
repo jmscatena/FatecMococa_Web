@@ -10,6 +10,8 @@ urlpatterns = [
     path('acesso/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('cursos/<str:nome>', cursos,name='cursos'),
+    path('cursos/grade/<str:nome>', grades, name='grades'),
+
     path('institucional/<str:nome>', institucional,name='institucional'),
     path('alunos/<str:nome>', alunos,name='alunos'),
     path('professores/<str:nome>', professores,name='professores'),
