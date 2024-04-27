@@ -1,7 +1,7 @@
 {% load static %}
 	<br>
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	<div class="carousel-inner" >
+		<div class="carousel-inner" >
 	  <div class="carousel-item active">
 		<a href="{% url 'cursos' 'agro'%}">
 			<img class="d-block w-50" src="{% static '/imagens/slider/agro.png' %}" alt="Curso Agronegócios" >
@@ -33,15 +33,15 @@
 		</a>
 	  </div>
 	</div>
-	<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
   	  <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa-solid fa-arrow-left" ></i></span>
 	  <span class="sr-only">Previous</span>
 	</a>
-	<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 	  <span class="carousel-control-next-icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
 	  <span class="sr-only">Next</span>
 	</a>
-  </div>
+  	</div>
 	<br><br>
 	<div class="row container">
 		<div class="col-sm-10">
@@ -193,26 +193,19 @@
 	<br>
 	<div class="container">
 		<div id="noticias">
-			<h2 class="texto">Vestibular</h2>
+			<h2 class="texto"><a href="{% url 'institucional' 'vestibular' %}">Vestibular</a></h2>
 			<div class="linha">
 				<br>
 			</div>
 		
 			<div class="d-flex mt-5 cards">
-			<div class="card">
-				<div class="card-body">
-					<img src="{% static '/imagens/gestao_logo.jpg' %}"/>
-					<br><br>
-					<h5>Gestão Empresarial</h5>
+				<div class="card">
+					<div class="card-body">
+						<img src="{% static '/imagens/vestibular_02_24.png' %}"/>
+						<br><br>
+						<h5>Vestibular 2º Semestre de 2024</h5>
+					</div>
 				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<img src="{% static '/imagens/cursos/agro_logo.png' %}"/>
-					<br><br>
-					<h5>Agronegócio</h5>
-				</div>
-			</div>
 			</div>
 		</div>
 	</div>

@@ -47,7 +47,8 @@ def grades(request,nome):
     return render(request,page)
 
 def institucional(request, nome):
-    paginas = {'secretaria','calendario','cpa','cepe','cipa','congregacao','contas','convenios','diretoria','ds','quemsomos','ti'}
+    paginas = {'secretaria','calendario','cpa','cepe','cipa','congregacao','contas','convenios','diretoria','ds',
+               'quemsomos','ti', 'vestibular'}
     page = 'institucional/'+nome+'.html' if nome in paginas else 'errors/404.html'
     return render(request,page)
 
