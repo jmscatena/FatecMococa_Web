@@ -192,21 +192,25 @@
 	<br>
 	<br>
 	<div class="container">
-		<div id="noticias">
-			<h2 class="texto"><a href="{% url 'institucional' 'vestibular' %}">Vestibular</a></h2>
+		<div class="col-sm-10">
+			<h2 class="texto">Vestibular</h2>
 			<div class="linha">
-				<br>
+				<br><br><br><br><br>
 			</div>
-		
-			<div class="d-flex mt-5 cards">
-				<div class="card">
-					<div class="card-body">
-						<img src="{% static '/imagens/vestibular_02_24.png' %}"/>
-						<br><br>
-						<h5>Vestibular 2º Semestre de 2024</h5>
-					</div>
-				</div>
+		</div>
+	</div>
+	<br/>
+	<div class="row container">
+		<div class="card card-news" style="margin-top:10px;width:50%;">
+			<div class="card-body text-center">
+				<img src="{% static '/imagens/institucional/vestibular_2_2024.png' %}"/>
+				<br><br>
+				<h3 class="blink"><a href="{% url 'institucional' 'vestibular' %}" style="color:white;">Inscrições Abertas <br/>Vestibular 2º Semestre de 2024</a></h3>
 			</div>
 		</div>
 	</div>
 	<br>
+
+
+
+
