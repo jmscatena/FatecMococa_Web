@@ -13,15 +13,15 @@ def login(request):
         dados = {'user','pwd'}
         if ('user' in request.POST) and ('pwd' in request.POST):
             username = authenticate(username=request.POST['user'], password=request.POST['pwd'])
-            if username is not None:
+            if username:
                 user = User.objects.get(username=username)
                 print(user.is_superuser)
                 request.session.set_expiry(180)
                 request.session['nome'] = user.first_name
                 return render(request,'noticias/edit.html')
-            return render(request,'login/login.html',context={'error':'Acesso Negado!'})
+            return render(request,'login/index.html',context={'error':'Acesso Negado!'})
         else:
-            return render(request,'login/login.html',context={'error':'Acesso Negado!'})
+            return render(request,'login/index.html',context={'error':'Acesso Negado!'})
     else: return render(request,'errors/404.html')
 
 def logout(request):
