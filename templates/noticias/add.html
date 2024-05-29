@@ -5,12 +5,12 @@
   <br>
   <main>
     <header class="entry-header">
-      <h1 class="entry-title">Editor Notícias</h1>
+      <h1 class="entry-title">Novas Notícias</h1>
       <div class="linha"></div>
     </header>
     <br>
 
-    <form role="form" id="form" method="post" action="{% url 'news_edit' %}"  enctype="multipart/form-data">
+    <form role="form" id="form" method="post" action="{% url 'news_add' %}"  enctype="multipart/form-data">
       {% csrf_token %}
       <div class="entry-content" style="width:95%!important" >
         <div class="form-group">

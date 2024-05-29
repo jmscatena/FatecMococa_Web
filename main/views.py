@@ -15,10 +15,9 @@ def login(request):
             username = authenticate(username=request.POST['user'], password=request.POST['pwd'])
             if username:
                 user = User.objects.get(username=username)
-                print(user.is_superuser)
                 request.session.set_expiry(180)
                 request.session['nome'] = user.first_name
-                return render(request,'noticias/edit.html')
+                return render(request,'noticias/add.html')
             return render(request,'login/index.html',context={'error':'Acesso Negado!'})
         else:
             return render(request,'login/index.html',context={'error':'Acesso Negado!'})
