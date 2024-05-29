@@ -27,10 +27,14 @@ def index(request,pk=None):
     else:
         return render(request,'errors/404.html')
 @login_required
-def edit(request):
-    if request.method == "POST":
-        create(request)
-    return render(request,'noticias/add.html')
+def editor(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            create(request)
+        return render(request,'noticias/add.html')
+    else:
+        return render(request, 'base/index.html')
+
 @login_required
 def create(request):
     tk = request.session['tk'] if 'tk' in request.session else None
