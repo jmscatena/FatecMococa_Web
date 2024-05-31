@@ -26,18 +26,17 @@ def index(request,pk=None):
         destroy(request,pk)
     else:
         return render(request,'errors/404.html')
-@login_required
 def editor(request):
-    if request.user.is_authenticated:
+    #if request.user.is_authenticated:
         if request.method == "POST":
             create(request)
         return render(request,'noticias/add.html')
-    else:
-        return render(request, 'base/index.html')
+    #else:
+    #    return render(request, 'base/index.html')
 
-@login_required
+
 def create(request):
-    tk = request.session['tk'] if 'tk' in request.session else None
+    #tk = request.session['tk'] if 'tk' in request.session else None
     error = None
     #if tk != None:
 
@@ -63,6 +62,7 @@ def create(request):
         print(cover_up)
         new = Noticia(titulo=title,descricao=description, arquivo=attach_up,capa=cover_up)
         new.save()
+        print(new)
         sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=5000)
     except Exception as ex:
             print(ex)
@@ -117,7 +117,6 @@ def update(request, pk=None):
     else: code = 401 # Unauthorized
     return render(request, 'noticias/edit.html', {'code': code, 'error': error})
 
-@login_required
 def select(request,pk=None):
     #tk = request.session['tk'] if 'tk' in request.session else None
         error = None

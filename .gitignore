@@ -3,4 +3,5 @@ db.sqlite3
 manage.py
 static/fontes/gimp
 *.xcf
-./fatecmococa/settings.py
+fatecmococa/settings.py
+fatecmococa/.env
