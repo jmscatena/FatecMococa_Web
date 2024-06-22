@@ -12,15 +12,15 @@
     <br>
     <form class="form" ></form>
     {% csrf_token %}
-    <div id="news-entry-content">
+    <div id="news-entry-content" style="width: 95%;">
       <table id="tabela-edit" class="table table-hover text-wrap">
         <thead>
         <tr >
           <th style="width:20%">Título</th>
-          <th style="width:35%">Descrição</th>
+          <th style="width:30%">Descrição</th>
           <th style="width:15%;text-align:center">Anexos</th>
-          <th style="text-align:center">Imagem</th>
-          <th style="width:10%">Ações</th>
+          <th style="width:20%;text-align:center">Imagem</th>
+          <th style="width:15%;text-align:center;">Ações</th>
         </tr>
         </thead>
 
@@ -37,7 +37,7 @@
             <td style="text-align:center">
                   <img id="news-capa" src="./../../media/{{n.capa}}">
             </td>
-            <td>
+            <td style="text-align: center;">
               <button name="del" id="del" class="btn btn-danger" data-toggle="modal"
                       data-target="#removeModal"><i class="fas fa-eraser"></i>
               </button>
