@@ -5,3 +5,5 @@ static/fontes/gimp
 *.xcf
 fatecmococa/settings.py
 fatecmococa/.env
+*.env
+fatecmococa/*.env
