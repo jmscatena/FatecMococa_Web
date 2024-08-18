@@ -1,5 +1,5 @@
 {% extends 'base/main.html'%}
-
+{% load static %}
 {% block content %}
   <br>
   <h5 class="hello">Editor:&nbsp;&nbsp;&nbsp;{{request.session.nome}}</h5>
@@ -10,109 +10,130 @@
       <div class="linha"></div>
     </header>
     <br>
-    <form class="form" ></form>
-    {% csrf_token %}
-    <div id="news-entry-content" style="width: 95%;">
-      <table id="tabela-edit" class="table table-hover text-wrap">
-        <thead>
-        <tr >
-          <th style="width:20%">Título</th>
-          <th style="width:30%">Descrição</th>
-          <th style="width:15%;text-align:center">Anexos</th>
-          <th style="width:20%;text-align:center">Imagem</th>
-          <th style="width:15%;text-align:center;">Ações</th>
-        </tr>
-        </thead>
+    <form class="form" id="form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="news-entry-content" style="width: 95%;">
+          <table id="tabela-edit" class="table table-hover text-wrap">
+            <thead>
+            <tr >
+              <th style="width:20%">Título</th>
+              <th style="width:30%">Descrição</th>
+              <th style="width:15%;text-align:center">Anexos</th>
+              <th style="width:20%;text-align:center">Imagem</th>
+              <th style="width:15%;text-align:center;">Ações</th>
+            </tr>
+            </thead>
 
-        <tbody>
-          {% for n in noticias %}
-          <tr>
-            <td>{{n.titulo}}</td>
-            <td>
-                {% autoescape off %}
-                   {{n.descricao}}
-                {% endautoescape %}
-            </td>
-            <td>{{n.anexos}}</td>
-            <td style="text-align:center">
-                  <img id="news-capa" src="./../../media/{{n.capa}}">
-            </td>
-            <td style="text-align: center;">
-              <button name="del" id="del" class="btn btn-danger" data-toggle="modal"
-                      data-target="#removeModal"><i class="fas fa-eraser"></i>
-              </button>
-              <button name="edit" id="edit" class="btn btn-success" data-toggle="modal"
-                      data-target="#editModal"><i class="fas fa-pencil-alt"></i>
-              </button>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      <br>
-    </div>
+            <tbody>
+              {% for n in noticias %}
+              <tr>
+                <td id="titulo-{{n.id}}">{{n.titulo}}</td>
+                <td id="descricao-{{n.id}}">
+                    {% autoescape off %}
+                       {{n.descricao}}
+                    {% endautoescape %}
+                </td>
+                <td id="anexos-{{n.id}}">{{n.anexos}}</td>
+                <td style="text-align:center">
+                      <img id="news-capa-{{n.id}}" src="./../../media/{{n.capa}}" alt="Sem Imagem">
+                </td>
+                <td style="text-align: center;">
+                  <button type="button" name="edit" id="edit" class="btn btn-success" data-toggle="modal"
+                          data-target="#editModal" onclick="show('{{n.id}}','edit')"><i class="fas fa-pencil-alt"></i>
+                  </button>
+
+                  <button type="button" name="del" id="del" class="btn btn-danger" data-toggle="modal"
+                          data-target="#removeModal" onclick="show('{{n.id}}','erase')"><i class="fas fa-eraser"></i>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <br>
+        </div>
+        <div class="modal fade" id="editModal" aria-hidden="true" style="z-index:100000000;">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+
+                <div class="entry-content" style="width:95%!important" >
+                  <div class="form-group">
+                      <label for="titulo">Título</label>
+                      <input type="text" class="form-control" id="titulo" name="titulo">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editor">Descrição</label>
+                    <textarea id="editor" name="descricao" value="000"></textarea>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="capa">Nova Imagem</label>
+                            <input type="file" class="form-control" id="capa" name="capa">
+                        </div>
+                    </div>
+                    <div class="col-6" style="text-align:center!important;">
+                          <div class="form-group">
+                              <label for="capa">Imagem de Exibição</label>
+                              <br>
+                              <img src="" id="news-capa" style="width: 40%;height: 40%;" alt="Sem Imagem">
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <center>
+                  <button type="submit" class="btn btn-outline-success" style="margin-right:15%;width:20%!important;"
+                          onclick="act('edit')" >Salvar</button>
+                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal" style="width:20%!important;">Cancelar</button>
+
+                </center>
+                <br>
+                <br>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="removeModal" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+
+                <div class="entry-content" style="width:95%!important" >
+                  <div class="form-group">
+                      <label for="titulo">Título</label>
+                      <input type="text" class="form-control" id="rem-titulo" name="titulo" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label for="editor">Descrição</label>
+                    <input type="text" class="form-control" id="rem-descricao" disabled>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <h3 style="text-align:center">Tem Certeza que Deseja Excluir?</h3>
+                  </div>
+
+                </div>
+                <center>
+                  <button type="button" class="btn btn-outline-danger" style="margin-right:15%;width:20%!important;"
+                  onclick="act('erase')">Excluir</button>
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal" style="width:20%!important;">Cancelar</button>
+                </center>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="code" name="code" value="">
+        <br>
+        <br>
+        <br>
+    </form>
   </main>
-  <div class="modal fade" id="editModal" aria-hidden="true" style="z-index:100000000;">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
 
-          <div class="entry-content" style="width:95%!important" >
-            <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo">
-            </div>
-            <div class="form-group">
-                <label for="capa">Imagem de Exibição</label>
-                <input type="file" class="form-control" id="capa" name="capa">
-            </div>
-            <div class="form-group">
-              <label for="editor">Descrição</label>
-              <textarea id="editor" name="descricao"></textarea>
-            </div>
-          </div>
-          <br>
-          <center>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success" style="width:80px!important;">Salvar</button>
-          </center>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="removeModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-
-          <div class="entry-content" style="width:95%!important" >
-            <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="rem-titulo" name="titulo" disabled>
-            </div>
-            <div class="form-group">
-              <label for="editor">Descrição</label>
-              <input type="text" class="form-control" id="rem-descricao" disabled>
-            </div>
-            <br>
-            <div class="form-group">
-                <h3 style="text-align:center">Tem Certeza que Deseja Excluir?</h3>
-            </div>
-
-          </div>
-          <br>
-          <center>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger" style="width:80px!important;">Excluir</button>
-          </center>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
+<script src="{% static '/js/noticias/script.js' %}"></script>
 <script>
   function logout(){
      window.location.href = "{% url 'logout' %}";

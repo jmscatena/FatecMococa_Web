@@ -13,19 +13,24 @@ def index(request,pk=None):
     noticias = []
     if request.path == '/noticias/':
         return render(request,'errors/404.html')
-    if request.method == 'POST':
+    if request.method == 'POST' and pk is None:
         create(request)
     elif request.method == 'GET' and pk is None:
         noticias = Noticia.objects.all()
         return render(request, 'noticias/edit.html',{'noticias':noticias})
     elif request.method == 'GET' and pk is not None:
         return render(request,'noticias/noticia.html',{'news':select(request,pk)})
-    elif request.method == 'PATCH':
-        update(request,pk)
-    elif request.method == 'DELETE':
-        destroy(request,pk)
+    elif request.method == 'POST' and pk is not None:
+        if request.POST['code'] == 'u':
+            update(request,pk)
+        elif request.POST['code'] == 'e':
+            destroy(request,pk)
     else:
         return render(request,'errors/404.html')
+    noticias = Noticia.objects.all()
+    return render(request, 'noticias/edit.html', {'noticias': noticias})
+
+
 def editor(request):
     #if request.user.is_authenticated:
         if request.method == "POST":
@@ -59,10 +64,8 @@ def create(request):
             attach_data: Dict[str, str]
         else:
             attach_up = './static/default.png'
-        print(cover_up)
         new = Noticia(titulo=title,descricao=description, arquivo=attach_up,capa=cover_up)
         new.save()
-        print(new)
         sweetify.success(request, 'Notícia Adicionada com Sucesso !', timer=5000)
     except Exception as ex:
             print(ex)
@@ -71,16 +74,19 @@ def create(request):
     #else: return 401  # Unauthorized
     #return render(request, 'noticias/add.html', {code: code, error: error})
 
-@login_required
 def destroy(request,pk=None):
-    tk = request.session['tk'] if 'tk' in request.session else None
+    #tk = request.session['tk'] if 'tk' in request.session else None
+    #print(tk)
+    tk='1'
     error = None
     if tk is not None:
+        print(pk)
         if pk is not None:
             try:
-                new = Noticia.object.get(id=pk)
-                if new is not None:
-                    new.delete()
+                news = Noticia.objects.get(id=pk)
+                print(news)
+                if news is not None:
+                    news.delete()
                     code = 202 # Accept
                 else:
                     code = 404 # Not Found
