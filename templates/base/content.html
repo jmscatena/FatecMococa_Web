@@ -146,7 +146,7 @@
 				<div class="card-body">
 					{% if news is not None%}
 				    <div class="entry-content">
-				      <table id="tabela" class="table table-hover text-nowrap no-border">
+				      <table id="tabela" class="table table-hover text-wrap no-border">
 						<thead>
 							<tr style="display:none;">
 								  <th>Imagem</th>
@@ -155,7 +155,7 @@
         				</thead>
 						{% for n in news %}
 						<tr>
-							<td style="margin-left:10px;">
+							<td style="margin-left:0px;">
 								<div class="card img-news">
 									<img src="media/{{n.capa}}">
 								</div>
